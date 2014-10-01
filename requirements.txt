@@ -1,0 +1,16 @@
+Flask==0.10.1
+Genshi==0.7
+Jinja2==2.7.3
+MarkupSafe==0.23
+Paste==1.7.5.1
+PasteDeploy==1.5.2
+PasteScript==1.7.5
+Pydap==unknown
+Werkzeug==0.9.6
+httplib2==0.9
+itsdangerous==0.24
+numpy==1.9.0
+pymongo==2.7.2
+pytz==2014.7
+requests==2.4.1
+wsgiref==0.1.2
