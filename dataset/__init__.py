@@ -1,9 +1,13 @@
 from pymongo import MongoClient
+import os 
 
-client = MongoClient('mongodb://localhost:27017/')
-opendap_database = client['opendap_databases']
-
-opendap_database_list = opendap_database['database_list']
+# Go setup the database connection to compose.io:
+mongo_user = os.environ.get('MONGO_USER','none')
+mongo_password = os.environ.get('MONGO_PASSWORD','none')
+mongo_url = 'mongodb://'+mongo_user+':'+mongo_password+\
+    '@linus.mongohq.com:10009/opendap_datasets'
+opendap_datasets = MongoClient(mongo_url)
+dataset_list = opendap_datasets['dataset_list']
 
 # for item in opendap_database_list:
 #   this_database = database_init(item.name)
@@ -15,7 +19,7 @@ class Dataset(object):
     def __init__(self):
         super(Dataset, self).__init__()
         self.name = 'vic_conus_3km'
-        self.collection = opendap_database[self.name]
+        self.collection = opendap_datasets[self.name]
 
     def get_xy(self,lat=None,lon=None):
         # Do the search
