@@ -34,7 +34,7 @@ class Dataset(db.Document):
         return unicode(self.id)
 
     def get_xy(self,lat=None,lon=None):
-        points = Vic_Conus_3km.objects(point__near=[lat,lon])
+        points = Vic_Conus_3km.objects(point__near=[lon,lat])
         return points
 
     def get_data(self,x=None,y=None):
