@@ -8,6 +8,7 @@ venv
 # Utility scripts for Kelly (and Gist):
 migration*
 names.py
+create_vic_conus_3km.py
 
 Procfile.local
 .DS_Store
