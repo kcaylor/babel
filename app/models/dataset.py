@@ -33,9 +33,9 @@ class Dataset(db.Document):
     def get_id(self):
         return unicode(self.id)
 
-    def get_xy(self,lat=None,lon=None):
-        points = Vic_Conus_3km.objects(point__near=[lon,lat])
-        return points
+    def get_xy(self,lat=None,lon=None,limit=1):
+        point = Vic_Conus_3km.objects(point__near=[lon,lat]).limit(limit)
+        return point.to_json()
 
     def get_data(self,x=None,y=None):
         pass

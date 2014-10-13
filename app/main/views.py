@@ -2,21 +2,24 @@ from flask import abort, jsonify
 from . import main
 from app.models import Dataset
 
-datasets = Dataset.objects()
-    
-def get_xy(dataset,lat,lon):
-    return "boo"
-
+dataset = Dataset.objects(name='vic_conus_3km').first()
 
 @main.route("/")
 def hello():
     return "Hello World"
 
-@main.route("/<api_key>/<lat>,<lon>", methods=['GET'])
-def opendap_json(api_key=None, lat=None, lon=None):
+@main.route("/<api_key>/<location>", methods=['GET'])
+def opendap_json(api_key=None, location=None):
+    try:
+        loc = location.split(',')
+    except:
+        abort(404)
+    try:
+        lat = float(loc[0])
+        lon = float(loc[1])
+    except:
+        abort(404)
     if lat and lon:
-        for dataset in datasets:
-            return get_xy(dataset,lat,lon)
-
+        return dataset.get_xy(lat=lat,lon=lon)
     else:
         return "error: provide latitude and longitude"
