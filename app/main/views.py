@@ -8,6 +8,7 @@ dataset = Dataset.objects(name='vic_conus_3km').first()
 def hello():
     return "Hello World"
 
+
 @main.route("/<api_key>/<location>", methods=['GET'])
 def opendap_json(api_key=None, location=None):
     try:
