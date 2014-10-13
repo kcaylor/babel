@@ -5,7 +5,7 @@ MarkupSafe==0.23
 Paste==1.7.5.1
 PasteDeploy==1.5.2
 PasteScript==1.7.5
-Pydap==unknown
+Pydap
 Werkzeug==0.9.6
 httplib2==0.9
 itsdangerous==0.24
