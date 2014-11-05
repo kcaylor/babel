@@ -29,8 +29,9 @@ def opendap_json(api_key=None, location=None):
         location = json.loads(dataset.get_xy(lat=lat,lon=lon))
     else:
         return "error: provide latitude and longitude"
-    result = 'dummy ' + str(lat) + str(lon)
-    #result = str(dataset.get_data(x=location[0]['x'],y=location[0]['y']))
+    result = json.dumps(location)
+    # result = 'dummy ' + str(lat) + str(lon)
+    # result = str(dataset.get_data(x=location[0]['x'],y=location[0]['y']))
     return result
 
 
